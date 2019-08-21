@@ -104,28 +104,26 @@ extension DatabaseWriter {
         -> AnyPublisher<P.Output, Error>
         where S : Scheduler, P : Publisher, P.Failure == Error
     {
-        Deferred {
-            Future<P, Error> { fulfill in
-                self.asyncWriteWithoutTransaction { db in
-                    do {
-                        var publisher: P? = nil
-                        try db.inTransaction {
-                            publisher = try updates(db)
-                            return .commit
-                        }
-                        // Support for writePublisher(updates:thenRead:):
-                        // fulfill after transaction, but still in the database
-                        // writer queue.
-                        fulfill(.success(publisher!))
-                    } catch {
-                        fulfill(.failure(error))
+        DeferredFuture<P, Error> { fulfill in
+            self.asyncWriteWithoutTransaction { db in
+                do {
+                    var publisher: P? = nil
+                    try db.inTransaction {
+                        publisher = try updates(db)
+                        return .commit
                     }
+                    // Support for writePublisher(updates:thenRead:):
+                    // fulfill after transaction, but still in the database
+                    // writer queue.
+                    fulfill(.success(publisher!))
+                } catch {
+                    fulfill(.failure(error))
                 }
             }
         }
-            // ? Tests for writePublisher(updates:thenRead:) fail
-            // without .unlimited
+            // ? I don't know why tests fails without .unlimited.
             .flatMap(maxPublishers: .unlimited, { $0 })
+            // ? I don't know why tests fails without this buffer
             .buffer(size: 1, prefetch: .keepFull, whenFull: .dropOldest)
             .receive(on: scheduler)
             .eraseToAnyPublisher()
@@ -136,15 +134,12 @@ extension DatabaseWriter {
         value: @escaping (Database, T) throws -> Output)
         -> AnyPublisher<Output, Error>
     {
-        Deferred {
-            Future { fulfill in
-                self.spawnConcurrentRead { db in
-                    fulfill(Result {
-                        try value(db.get(), input)
-                    })
-                }
+        DeferredFuture { fulfill in
+            self.spawnConcurrentRead { db in
+                fulfill(Result {
+                    try value(db.get(), input)
+                })
             }
-            .buffer(size: 1, prefetch: .keepFull, whenFull: .dropOldest)
         }
         .eraseToAnyPublisher()
     }
