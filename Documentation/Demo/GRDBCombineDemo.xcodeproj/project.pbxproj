@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5602E859230EAF42008FFBCD /* AppDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5602E855230EAF42008FFBCD /* AppDatabaseTests.swift */; };
+		5602E85D230EAFB8008FFBCD /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 5602E85C230EAFB8008FFBCD /* GRDBCombine */; };
+		5602E85F230EAFB8008FFBCD /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5602E85E230EAFB8008FFBCD /* GRDB */; };
+		5602E860230EAFD8008FFBCD /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF378F22A9969900166718 /* AppDatabase.swift */; };
+		5602E862230EAFF1008FFBCD /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FA87B22AD51DA0036C2D8 /* Players.swift */; };
+		5602E863230EAFFA008FFBCD /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56284AFD22AD1FC700048746 /* World.swift */; };
+		5602E868230EB139008FFBCD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF379322A9A73300166718 /* Player.swift */; };
+		5602E869230EB153008FFBCD /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5602E852230EAF42008FFBCD /* PlayerTests.swift */; };
+		5602E86A230EB1D5008FFBCD /* PlayersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5602E854230EAF42008FFBCD /* PlayersTests.swift */; };
+		5602E86B230EB5BF008FFBCD /* HallOfFameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5602E853230EAF42008FFBCD /* HallOfFameViewModelTests.swift */; };
+		5602E86C230EB5E0008FFBCD /* HallOfFameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AACA9C22AC2C7C00A40F2A /* HallOfFameViewModel.swift */; };
 		56284AFC22AD19CC00048746 /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 56284AFB22AD19CC00048746 /* GRDBCombine */; };
 		56284AFE22AD1FC800048746 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56284AFD22AD1FC700048746 /* World.swift */; };
 		56284B0022AD215200048746 /* Combine+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56284AFF22AD215200048746 /* Combine+App.swift */; };
@@ -34,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5602E85A230EAF86008FFBCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56DF375D22A992DB00166718 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56DF376422A992DB00166718;
+			remoteInfo = GRDBCombineDemo;
+		};
 		56B28CF022BA09CB00E65640 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56DF375D22A992DB00166718 /* Project object */;
@@ -44,6 +62,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5602E84A230EACBA008FFBCD /* GRDBCombineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GRDBCombineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5602E84E230EACBA008FFBCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5602E852230EAF42008FFBCD /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		5602E853230EAF42008FFBCD /* HallOfFameViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HallOfFameViewModelTests.swift; sourceTree = "<group>"; };
+		5602E854230EAF42008FFBCD /* PlayersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersTests.swift; sourceTree = "<group>"; };
+		5602E855230EAF42008FFBCD /* AppDatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDatabaseTests.swift; sourceTree = "<group>"; };
 		56284AFD22AD1FC700048746 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		56284AFF22AD215200048746 /* Combine+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+App.swift"; sourceTree = "<group>"; };
 		563CCE2422C3278200A11C56 /* GRDBCombine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GRDBCombine; path = ../..; sourceTree = "<group>"; };
@@ -72,6 +96,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5602E847230EACBA008FFBCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5602E85D230EAFB8008FFBCD /* GRDBCombine in Frameworks */,
+				5602E85F230EAFB8008FFBCD /* GRDB in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B28CE822BA09CB00E65640 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,6 +126,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5602E84B230EACBA008FFBCD /* GRDBCombineDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				5602E84E230EACBA008FFBCD /* Info.plist */,
+				5602E855230EAF42008FFBCD /* AppDatabaseTests.swift */,
+				5602E853230EAF42008FFBCD /* HallOfFameViewModelTests.swift */,
+				5602E854230EAF42008FFBCD /* PlayersTests.swift */,
+				5602E852230EAF42008FFBCD /* PlayerTests.swift */,
+			);
+			path = GRDBCombineDemoTests;
+			sourceTree = "<group>";
+		};
 		56284AFA22AD19CC00048746 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +160,6 @@
 		56AACA9922AC16EC00A40F2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				56DF378F22A9969900166718 /* AppDatabase.swift */,
 				566FA87B22AD51DA0036C2D8 /* Players.swift */,
 				56DF379322A9A73300166718 /* Player.swift */,
 			);
@@ -151,6 +195,7 @@
 			children = (
 				56DF376722A992DB00166718 /* GRDBCombineDemo */,
 				56B28CEC22BA09CB00E65640 /* GRDBCombineTests */,
+				5602E84B230EACBA008FFBCD /* GRDBCombineDemoTests */,
 				56DF376622A992DB00166718 /* Products */,
 				56284AFA22AD19CC00048746 /* Frameworks */,
 				563CCE2422C3278200A11C56 /* GRDBCombine */,
@@ -162,6 +207,7 @@
 			children = (
 				56DF376522A992DB00166718 /* GRDBCombineDemo.app */,
 				56B28CEB22BA09CB00E65640 /* GRDBCombineTests.xctest */,
+				5602E84A230EACBA008FFBCD /* GRDBCombineDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				56DF377622A992DC00166718 /* Info.plist */,
+				56DF378F22A9969900166718 /* AppDatabase.swift */,
 				56DF376822A992DB00166718 /* AppDelegate.swift */,
 				56DF376A22A992DB00166718 /* SceneDelegate.swift */,
 				56284AFD22AD1FC700048746 /* World.swift */,
@@ -184,6 +231,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5602E849230EACBA008FFBCD /* GRDBCombineDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5602E84F230EACBA008FFBCD /* Build configuration list for PBXNativeTarget "GRDBCombineDemoTests" */;
+			buildPhases = (
+				5602E846230EACBA008FFBCD /* Sources */,
+				5602E847230EACBA008FFBCD /* Frameworks */,
+				5602E848230EACBA008FFBCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5602E85B230EAF86008FFBCD /* PBXTargetDependency */,
+			);
+			name = GRDBCombineDemoTests;
+			packageProductDependencies = (
+				5602E85C230EAFB8008FFBCD /* GRDBCombine */,
+				5602E85E230EAFB8008FFBCD /* GRDB */,
+			);
+			productName = GRDBCombineDemoTests;
+			productReference = 5602E84A230EACBA008FFBCD /* GRDBCombineDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		56B28CEA22BA09CB00E65640 /* GRDBCombineTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56B28CF422BA09CB00E65640 /* Build configuration list for PBXNativeTarget "GRDBCombineTests" */;
@@ -237,6 +306,10 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Gwendal Roué";
 				TargetAttributes = {
+					5602E849230EACBA008FFBCD = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
 					56B28CEA22BA09CB00E65640 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -264,11 +337,19 @@
 			targets = (
 				56DF376422A992DB00166718 /* GRDBCombineDemo */,
 				56B28CEA22BA09CB00E65640 /* GRDBCombineTests */,
+				5602E849230EACBA008FFBCD /* GRDBCombineDemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5602E848230EACBA008FFBCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B28CE922BA09CB00E65640 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +370,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5602E846230EACBA008FFBCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5602E86A230EB1D5008FFBCD /* PlayersTests.swift in Sources */,
+				5602E862230EAFF1008FFBCD /* Players.swift in Sources */,
+				5602E859230EAF42008FFBCD /* AppDatabaseTests.swift in Sources */,
+				5602E863230EAFFA008FFBCD /* World.swift in Sources */,
+				5602E868230EB139008FFBCD /* Player.swift in Sources */,
+				5602E86C230EB5E0008FFBCD /* HallOfFameViewModel.swift in Sources */,
+				5602E86B230EB5BF008FFBCD /* HallOfFameViewModelTests.swift in Sources */,
+				5602E869230EB153008FFBCD /* PlayerTests.swift in Sources */,
+				5602E860230EAFD8008FFBCD /* AppDatabase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B28CE722BA09CB00E65640 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +420,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5602E85B230EAF86008FFBCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56DF376422A992DB00166718 /* GRDBCombineDemo */;
+			targetProxy = 5602E85A230EAF86008FFBCD /* PBXContainerItemProxy */;
+		};
 		56B28CF122BA09CB00E65640 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56DF376422A992DB00166718 /* GRDBCombineDemo */;
@@ -350,6 +452,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5602E850230EACBA008FFBCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GRDBCombineDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.groue.GRDBCombineDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5602E851230EACBA008FFBCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GRDBCombineDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.groue.GRDBCombineDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		56B28CF222BA09CB00E65640 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -539,6 +678,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5602E84F230EACBA008FFBCD /* Build configuration list for PBXNativeTarget "GRDBCombineDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5602E850230EACBA008FFBCD /* Debug */,
+				5602E851230EACBA008FFBCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		56B28CF422BA09CB00E65640 /* Build configuration list for PBXNativeTarget "GRDBCombineTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -588,6 +736,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5602E85C230EAFB8008FFBCD /* GRDBCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56DF378C22A9964900166718 /* XCRemoteSwiftPackageReference "GRDBCombine" */;
+			productName = GRDBCombine;
+		};
+		5602E85E230EAFB8008FFBCD /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56B28CF922BA0D8900E65640 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
 		56284AFB22AD19CC00048746 /* GRDBCombine */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56DF378C22A9964900166718 /* XCRemoteSwiftPackageReference "GRDBCombine" */;

@@ -13,37 +13,19 @@ struct Players {
     
     // MARK: - Modify Players
     
+    /// Creates random players if needed, and returns whether the database
+    /// was empty.
+    @discardableResult
+    func populateIfEmpty() throws -> Bool {
+        return try database.write(_populateIfEmpty)
+    }
+    
     func deleteAll() throws {
-        try database.write { db in
-            _ = try Player.deleteAll(db)
-        }
+        try database.write(_deleteAll)
     }
     
     func refresh() throws {
-        try database.write { db in
-            if try Player.fetchCount(db) == 0 {
-                // Insert new random players
-                for _ in 0..<8 {
-                    var player = Player(id: nil, name: Player.randomName(), score: Player.randomScore())
-                    try player.insert(db)
-                }
-            } else {
-                // Insert a player
-                if Bool.random() {
-                    var player = Player(id: nil, name: Player.randomName(), score: Player.randomScore())
-                    try player.insert(db)
-                }
-                // Delete a random player
-                if Bool.random() {
-                    try Player.order(sql: "RANDOM()").limit(1).deleteAll(db)
-                }
-                // Update some players
-                for var player in try Player.fetchAll(db) where Bool.random() {
-                    player.score = Player.randomScore()
-                    try player.update(db)
-                }
-            }
-        }
+        try database.write(_refresh)
     }
     
     func stressTest() {
@@ -57,7 +39,7 @@ struct Players {
     // MARK: - Access Players
     
     /// A Hole of Fame
-    struct HallOfFame {
+    struct HallOfFame: Equatable {
         /// Total number of players
         var playerCount: Int
         
@@ -72,7 +54,7 @@ struct Players {
                 let playerCount = try Player.fetchCount(db)
                 let bestPlayers = try Player
                     .limit(maxPlayerCount)
-                    .orderedByScore()
+                    .orderByScore()
                     .fetchAll(db)
                 return HallOfFame(playerCount: playerCount, bestPlayers: bestPlayers)
             })
@@ -84,5 +66,51 @@ struct Players {
         ValueObservation
             .tracking(value: Player.fetchCount)
             .publisher(in: database)
+    }
+    
+    // MARK: - Implementation
+    //
+    // ⭐️ Good practice: when we want to update the database, we define methods
+    // that accept a Database connection, because they can easily be composed.
+    
+    /// Creates random players if needed, and returns whether the database
+    /// was empty.
+    private func _populateIfEmpty(_ db: Database) throws -> Bool {
+        if try Player.fetchCount(db) > 0 {
+            return false
+        }
+        
+        // Insert new random players
+        for _ in 0..<8 {
+            var player = Player(id: nil, name: Player.randomName(), score: Player.randomScore())
+            try player.insert(db)
+        }
+        return true
+    }
+    
+    private func _deleteAll(_ db: Database) throws {
+        try Player.deleteAll(db)
+    }
+    
+    private func _refresh(_ db: Database) throws {
+        if try _populateIfEmpty(db) {
+            return
+        }
+        
+        // Insert a player
+        if Bool.random() {
+            var player = Player(id: nil, name: Player.randomName(), score: Player.randomScore())
+            try player.insert(db)
+        }
+        // Delete a random player
+        if Bool.random() {
+            try Player.order(sql: "RANDOM()").limit(1).deleteAll(db)
+        }
+        // Update some players
+        for var player in try Player.fetchAll(db) where Bool.random() {
+            try player.updateChanges(db) {
+                $0.score = Player.randomScore()
+            }
+        }
     }
 }

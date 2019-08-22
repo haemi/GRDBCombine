@@ -1,7 +1,7 @@
 import GRDB
 
 // A plain Player struct
-struct Player {
+struct Player: Equatable {
     // Use Int64 for auto-incremented database ids
     var id: Int64?
     var name: String
@@ -31,12 +31,12 @@ extension Player: Codable, FetchableRecord, MutablePersistableRecord {
 // Define some useful player requests.
 // See https://github.com/groue/GRDB.swift/blob/master/README.md#requests
 extension DerivableRequest where RowDecoder == Player {
-    func orderedByName() -> Self {
-        order(Player.Columns.name)
+    func orderByScore() -> Self {
+        return order(Player.Columns.score.desc, Player.Columns.name)
     }
     
-    func orderedByScore() -> Self {
-        order(Player.Columns.score.desc, Player.Columns.name)
+    func orderByName() -> Self {
+        return order(Player.Columns.name, Player.Columns.score.desc)
     }
 }
 

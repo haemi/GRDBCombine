@@ -1,27 +1,28 @@
 import GRDB
 
-/// A type responsible for initializing the application database.
-///
-/// See AppDelegate.setupDatabase()
+/// A type responsible for initializing an application database.
 struct AppDatabase {
     
-    /// Creates a fully initialized database at path
-    static func openDatabase(atPath path: String) throws -> DatabasePool {
-        // Connect to the database
-        // See https://github.com/groue/GRDB.swift/blob/master/README.md#database-connections
-        let dbPool = try DatabasePool(path: path)
+    /// Prepares a fully initialized database at path
+    func setup(_ database: DatabaseWriter) throws {
+        // Use DatabaseMigrator to define the database schema
+        // See https://github.com/groue/GRDB.swift/#migrations
+        try migrator.migrate(database)
         
-        // Define the database schema
-        try migrator.migrate(dbPool)
-        
-        return dbPool
+        // Other possible setup include: custom functions, collations,
+        // full-text tokenizers, etc.
     }
     
     /// The DatabaseMigrator that defines the database schema.
     ///
     /// See https://github.com/groue/GRDB.swift/blob/master/README.md#migrations
-    static var migrator: DatabaseMigrator {
+    var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
+        
+        #if DEBUG
+        // Speed up development by nuking the database when migrations change
+        migrator.eraseDatabaseOnSchemaChange = true
+        #endif
         
         migrator.registerMigration("createPlayer") { db in
             // Create a table
@@ -34,14 +35,6 @@ struct AppDatabase {
                 t.column("name", .text).notNull().collate(.localizedCaseInsensitiveCompare)
                 
                 t.column("score", .integer).notNull()
-            }
-        }
-        
-        migrator.registerMigration("fixtures") { db in
-            // Populate the players table with random data
-            for _ in 0..<8 {
-                var player = Player(id: nil, name: Player.randomName(), score: Player.randomScore())
-                try player.insert(db)
             }
         }
         

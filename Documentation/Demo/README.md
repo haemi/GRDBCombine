@@ -6,7 +6,7 @@ Demo Application
 
 ## Models
 
-- [AppDatabase.swift](GRDBCombineDemo/Models/AppDatabase.swift)
+- [AppDatabase.swift](GRDBCombineDemo/AppDatabase.swift)
     
     AppDatabase defines the database for the whole application. It uses [DatabaseMigrator](https://github.com/groue/GRDB.swift/blob/master/README.md#migrations) in order to setup the database schema, and a [DatabasePool](https://github.com/groue/GRDB.swift/blob/master/README.md#database-pools) for efficient multi-threading.
 
