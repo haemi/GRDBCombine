@@ -264,6 +264,7 @@ class DatabaseWriterWritePublisherTests : XCTestCase {
                 .writePublisher(
                     updates: { _ in },
                     thenRead: { db, _ in try Row.fetchAll(db, sql: "THIS IS NOT SQL") })
+                // TODO: I saw concurrentReadPublisher call spawnConcurrentRead on a wrong thread
                 .sink(
                     receiveCompletion: { completion in
                         XCTAssertError(completion) { (error: DatabaseError) in
